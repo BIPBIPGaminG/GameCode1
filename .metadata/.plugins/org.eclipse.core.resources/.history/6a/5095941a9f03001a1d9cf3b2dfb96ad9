@@ -1,0 +1,19 @@
+package fr.bipbipgaming.engine.io;
+
+import org.lwjgl.assimp.AIScene;
+import org.lwjgl.assimp.Assimp;
+
+import fr.bipbipgaming.engine.graphics.Mesh;
+
+public class ModelLoader {
+
+	private static Mesh loadModel(String filePath, String texturePath) {
+		
+		AIScene scene = Assimp.aiImportFile(filePath, Assimp.aiProcess_JoinIdenticalVertices | Assimp.aiProcess_Triangulate);
+		
+		if (scene == null) System.err.println("Couldn't load model at " + filePath);
+
+		
+	}
+	
+}

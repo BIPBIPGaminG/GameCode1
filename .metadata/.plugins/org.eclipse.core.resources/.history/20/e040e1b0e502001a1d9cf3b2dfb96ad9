@@ -1,0 +1,16 @@
+package fr.bipbipgaming.engine.graphics;
+
+import org.newdawn.slick.opengl.Texture;
+import org.newdawn.slick.opengl.TextureLoader;
+
+public class Material {
+	
+	private Texture texture;
+	
+	public Material(String path) {
+		
+		texture = TextureLoader.getTexture(path.split("[.]"), );
+		
+	}
+	
+}

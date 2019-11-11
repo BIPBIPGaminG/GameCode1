@@ -1,0 +1,64 @@
+package fr.bipbipgaming.engine.objects;
+
+import java.util.ArrayList;
+import java.util.List;
+
+import fr.bipbipgaming.engine.graphics.Mesh;
+import fr.bipbipgaming.engine.graphics.Renderer;
+import fr.bipbipgaming.engine.io.ModelLoader;
+import fr.bipbipgaming.engine.math.Vector3f;
+import fr.bipbipgaming.main.Main;
+
+public class Block {
+	
+	private Vector3f position, rotation, scale;
+	private String texturePath;
+	private String modelPath;
+	public Renderer renderer;
+	public List<Mesh> arrayBlock = new ArrayList<Mesh>();
+	
+	public Block(Vector3f position, Vector3f rotation, Vector3f scale, String texturePath, String modelPath) {
+
+		this.position = position;
+		this.rotation = rotation;
+		this.scale = scale;
+		this.texturePath = texturePath;
+		this.modelPath = modelPath;
+		arrayBlock.add(ModelLoader.loadModel(modelPath, texturePath));
+		
+	}
+	
+	public void render(Block block) {
+		
+		for (int i = 0; i < arrayBlock.size(); i++) {
+			
+			GameObject object = new GameObject(block.position, block.rotation, block.scale, arrayBlock.get(i));
+			Main.renderer.renderMesh(object);
+			
+		}
+		
+	}
+	
+	public void destroy() {
+		
+		for (int i = 0; i < arrayBlock.size(); i++) {
+			
+			arrayBlock.get(i).destroy();
+			
+		}
+		
+	}
+	
+	public void create() {
+		
+		for (int i = 0; i < arrayBlock.size(); i++) {
+			
+			arrayBlock.get(i).create();
+			
+		}
+		
+	}
+	
+	
+	
+}

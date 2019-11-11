@@ -1,0 +1,14 @@
+package fr.bipbipgaming.main;
+
+import java.util.ArrayList;
+import java.util.List;
+
+import fr.bipbipgaming.engine.graphics.Renderer;
+import fr.bipbipgaming.engine.math.Vector3f;
+import fr.bipbipgaming.engine.objects.Block;
+
+public class Objectinit {
+
+
+	
+}

@@ -1,0 +1,5 @@
+package fr.bipbipgaming.math;
+
+public class Vector3f {
+
+}

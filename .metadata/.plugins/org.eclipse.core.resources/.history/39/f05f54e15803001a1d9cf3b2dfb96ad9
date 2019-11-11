@@ -1,0 +1,40 @@
+package fr.bipbipgaming.main;
+
+import java.util.ArrayList;
+import java.util.List;
+
+import fr.bipbipgaming.engine.graphics.Renderer;
+import fr.bipbipgaming.engine.math.Vector3f;
+import fr.bipbipgaming.engine.objects.Block;
+
+public class Objectinit {
+
+	public Renderer renderer;
+	public Block block;
+	public static List<Block> arrayBlock = new ArrayList<Block>();
+	
+	public static void init() {
+		
+		createObject(new Block(new Vector3f(0, 0, 0), new Vector3f(0, 0, 0), new Vector3f(1.0f, 1.0f, 1.0f), "/textures/beautiful.png"));
+		createObject(new Block(new Vector3f(0, 0, 2.0f), new Vector3f(0, 0, 0), new Vector3f(1.0f, 1.0f, 1.0f), "/textures/beautiful.png"));
+		createObject(new Block(new Vector3f(0, 0, -2.0f), new Vector3f(0, 0, 0), new Vector3f(1.0f, 1.0f, 1.0f), "/textures/beautiful.png"));
+		
+	}
+	
+	public static void createObject(Block block) {
+		arrayBlock.add(block);
+	}
+	
+	public void close() {
+		for (int i = 0; i < arrayBlock.size(); i++) {
+			arrayBlock.get(i).destroy();
+		}
+	}
+	
+	public void render() {
+		for (int i = 0; i < arrayBlock.size(); i++) {
+			renderer.renderMesh(arrayBlock.get(i).create());
+		}
+	}
+	
+}

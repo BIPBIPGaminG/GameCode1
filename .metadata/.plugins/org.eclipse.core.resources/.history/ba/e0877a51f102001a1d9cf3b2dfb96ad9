@@ -1,0 +1,48 @@
+package fr.bipbipgaming.engine.graphics;
+
+import static org.lwjgl.opengl.GL11.*;
+import static org.lwjgl.opengl.GL13.*;
+import static org.lwjgl.opengl.GL15.*;
+import static org.lwjgl.opengl.GL30.*;
+
+public class Renderer {
+	
+	private Shader shader;
+	
+	public Renderer(Shader shader) {
+		
+		this.shader = shader;
+		
+	}
+	
+	public void renderMesh(Mesh mesh) {
+		
+		glBindVertexArray(mesh.getVAO());
+		glEnableVertexAttribArray(0);
+		glEnableVertexAttribArray(1);
+		glEnableVertexAttribArray(2);
+		glBindBuffer(GL_ELEMENT_ARRAY_BUFFER, mesh.getIBO());
+		glEnable(GL_TEXTURE_2D);
+		glActiveTexture(GL_TEXTURE0);
+		glBindTexture(GL_TEXTURE_2D, mesh.getMaterial().getTextureID());
+		shader.bind();
+		glDrawElements(GL_TRIANGLES, mesh.getIndices().length, GL_UNSIGNED_INT, 0);
+		
+		glMatrixMode(GL_TEXTURE);
+
+		glLoadIdentity();
+		glRotatef(0, 0, 1, 0);
+
+		glMatrixMode(GL_PROJECTION);
+		
+		shader.unbind();
+		glDisable(GL_TEXTURE_2D);
+		glBindBuffer(GL_ELEMENT_ARRAY_BUFFER, 0);
+		glDisableVertexAttribArray(0);
+		glDisableVertexAttribArray(1);
+		glDisableVertexAttribArray(2);
+		glBindVertexArray(0);
+		
+	}
+	
+}

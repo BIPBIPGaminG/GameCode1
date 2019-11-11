@@ -1,0 +1,92 @@
+package fr.bipbipgaming.main;
+
+import static org.lwjgl.glfw.GLFW.GLFW_KEY_ESCAPE;
+import static org.lwjgl.glfw.GLFW.GLFW_KEY_F11;
+
+import org.lwjgl.glfw.GLFW;
+
+import fr.bipbipgaming.engine.graphics.Renderer;
+import fr.bipbipgaming.engine.graphics.Shader;
+import fr.bipbipgaming.engine.io.Input;
+import fr.bipbipgaming.engine.io.ModelLoader;
+import fr.bipbipgaming.engine.io.Window;
+import fr.bipbipgaming.engine.math.Vector3f;
+import fr.bipbipgaming.engine.objects.Block;
+import fr.bipbipgaming.engine.objects.Camera;
+
+public class Main implements Runnable {
+	
+	public Thread game;
+	public static Window window;
+	public static Renderer renderer;
+	public static Shader shader;
+	public static Block block;
+	public final int static WIDTH = 1280, HEIGHT = 760;
+	
+	public Camera camera = new Camera(new Vector3f(0, 0, 1), new Vector3f(0, 0, 0));
+	
+	public void start() {
+		
+		game = new Thread(this, "game");
+		game.start();
+		
+		
+	}
+	
+	public static void init() {
+		
+		Block.createObject(new Vector3f(0, 0, 0), new Vector3f(0, 0, 0), new Vector3f(1.0f, 1.0f, 1.0f), ModelLoader.loadModel("resources/models/dragon2.obj", "/textures/gray.png"));
+		window = new Window(WIDTH, HEIGHT, "GAME");
+		shader = new Shader("/shaders/mainVertex.glsl", "/shaders/mainFragment.glsl");
+		renderer = new Renderer(window, shader);
+		window.create();
+		shader.create();
+		
+	}
+	
+	public void run() {
+		
+		init();
+		while (!window.shouldClose() && !Input.isKeyDown(GLFW_KEY_ESCAPE)) {
+			
+			update();
+			render();
+			
+			if(Input.isKeyDown(GLFW_KEY_F11)) window.setFullscreen(!window.isFullscreen());
+			if (Input.isMouseButtonDown(GLFW.GLFW_MOUSE_BUTTON_LEFT)) window.setMouseState(true);;
+			
+		}
+		
+		close();
+		
+	}
+	
+	private void update() {
+		
+		window.update();
+		camera.update();
+		
+	}
+	
+	private void close() {
+		
+		window.destroy();
+		block.destroy();
+		shader.destroy();
+		
+	}
+	
+	private void render() {
+		
+		renderer.renderCamera(camera);
+		window.swapBuffers();
+		
+	}
+	
+	public static void main(String[] args) {
+		
+		new Main().start();
+
+	}
+	
+}

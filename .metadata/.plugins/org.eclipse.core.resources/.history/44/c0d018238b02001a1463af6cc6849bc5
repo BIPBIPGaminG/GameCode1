@@ -1,0 +1,13 @@
+package fr.bipbipgaming.engine.graphics;
+
+import org.lwjgl.opengl.GL30;
+
+public class Renderer {
+
+	public void renderMesh(Mesh mesh) {
+		
+		GL30.glBindVertexArray(mesh.getVAO());
+		
+	}
+	
+}

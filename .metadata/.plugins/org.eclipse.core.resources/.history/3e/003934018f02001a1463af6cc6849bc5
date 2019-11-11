@@ -1,0 +1,11 @@
+package fr.bipbipgaming.engine.utils;
+
+public class FileUtils {
+
+	public static String loadAsString(String path) {
+		
+		StringBuilder result = new StringBuilder();
+		return result.toString();
+	}
+	
+}

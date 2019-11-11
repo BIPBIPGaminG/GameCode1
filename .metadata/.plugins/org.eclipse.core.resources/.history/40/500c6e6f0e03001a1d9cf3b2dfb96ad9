@@ -1,0 +1,9 @@
+package fr.bipbipgaming.engine.objects;
+
+import fr.bipbipgaming.engine.math.Vector3f;
+
+public class GameObject {
+
+	private Vector3f position, rotation, scale;
+	
+}

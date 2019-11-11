@@ -1,0 +1,17 @@
+package fr.bipbipgaming.engine.objects;
+
+import java.util.ArrayList;
+
+import fr.bipbipgaming.engine.graphics.Mesh;
+
+public class Block {
+	
+	public ArrayList<Mesh> meshArray = new ArrayList<Mesh>();
+	
+	public Mesh createMesh(Mesh mesh) {
+		
+		
+		
+	}
+	
+}

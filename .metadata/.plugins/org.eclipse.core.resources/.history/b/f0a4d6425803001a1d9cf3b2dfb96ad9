@@ -1,0 +1,31 @@
+package fr.bipbipgaming.main;
+
+import java.util.ArrayList;
+import java.util.List;
+
+import fr.bipbipgaming.engine.graphics.Renderer;
+import fr.bipbipgaming.engine.objects.Block;
+
+public class Objectinit {
+
+	public static Renderer renderer;
+	public static Block block;
+	public static List<Block> arrayBlock = new ArrayList<Block>();
+	
+	public static void createObject(Block block) {
+		arrayBlock.add(block);
+	}
+	
+	public static void close() {
+		for (int i = 0; i < arrayBlock.size(); i++) {
+			arrayBlock.get(i).destroy();
+		}
+	}
+	
+	public static void render() {
+		for (int i = 0; i < arrayBlock.size(); i++) {
+			renderer.renderMesh(arrayBlock.get(i).create());
+		}
+	}
+	
+}

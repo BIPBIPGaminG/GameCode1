@@ -1,0 +1,18 @@
+package fr.bipbipgaming.main;
+
+import java.util.ArrayList;
+import java.util.List;
+
+import fr.bipbipgaming.engine.math.Vector3f;
+import fr.bipbipgaming.engine.objects.Block;
+
+public class Objectinit {
+
+	public static Block block;
+	public static List<Block> arrayBlock = new ArrayList<Block>();
+	
+	public static void createObject(Block block) {
+		arrayBlock.add(block);
+	}
+	
+}

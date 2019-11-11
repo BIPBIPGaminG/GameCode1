@@ -1,0 +1,54 @@
+package fr.bipbipgaming.engine.graphics;
+
+import java.io.IOException;
+
+import org.lwjgl.opengl.GL11;
+import org.lwjgl.opengl.GL13;
+import org.newdawn.slick.opengl.Texture;
+import org.newdawn.slick.opengl.TextureLoader;
+
+import fr.bipbipgaming.engine.utils.FileUtils;
+
+public class Material {
+	
+	private Texture texture;
+	private float width, height;
+	private int textureID;
+	
+	public Material(String path) {
+		
+		
+		
+	}
+	
+	public void create() {
+		
+		try {
+			texture = TextureLoader.getTexture(path.split("[.]")[1], FileUtils.class.getResourceAsStream(path), GL11.GL_LINEAR);
+		} catch (IOException e) {
+			System.err.println("Can't find texture at " + path);
+		}
+		
+	}
+	
+	public void destroy() {
+		
+		GL13.glDeleteTextures(textureID);
+		
+	}
+
+	public float getWidth() {
+		return width;
+	}
+
+	public float getHeight() {
+		return height;
+	}
+
+	public int getTextureID() {
+		return textureID;
+	}
+	
+	
+	
+}

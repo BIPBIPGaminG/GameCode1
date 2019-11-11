@@ -1,0 +1,16 @@
+package fr.bipbipgaming.engine.graphics;
+
+import fr.bipbipgaming.engine.utils.FileUtils;
+
+public class Shader {
+
+	private String vertexFile, fragmentFile;
+	
+	public Shader(String vertexPath, String fragmentPath) {
+		
+		fragmentFile = FileUtils.loadAsString(fragmentPath);
+		vertexFile = FileUtils.loadAsString(vertexPath);
+		
+	}
+	
+}

@@ -1,0 +1,26 @@
+package fr.bipbipgaming.engine.graphics;
+
+import java.io.IOException;
+
+import org.lwjgl.opengl.GL11;
+import org.newdawn.slick.opengl.Texture;
+import org.newdawn.slick.opengl.TextureLoader;
+
+import fr.bipbipgaming.engine.utils.FileUtils;
+
+public class Material {
+	
+	private Texture texture;
+	
+	public Material(String path) {
+		
+		try {
+			texture = TextureLoader.getTexture(path.split("[.]")[1], FileUtils.class.getResourceAsStream(path), GL11.GL_LINEAR);
+		} catch (IOException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		
+	}
+	
+}

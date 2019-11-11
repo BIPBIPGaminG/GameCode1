@@ -1,0 +1,27 @@
+package fr.bipbipgaming.engine.objects;
+
+import java.util.ArrayList;
+
+import fr.bipbipgaming.engine.graphics.Mesh;
+import fr.bipbipgaming.engine.math.Vector3f;
+
+public class Block {
+	
+	public ArrayList<GameObject> objectArray = new ArrayList<GameObject>();
+	public ArrayList<Mesh> mesharray = new ArrayList<Mesh>();
+	
+	public void createObject(Vector3f position, Vector3f rotation, Vector3f scale, Mesh mesh) {
+		
+		mesh.create();
+		
+		objectArray.add(new GameObject(position, rotation, scale, mesh));
+		
+	}
+	
+	public void destroy() {
+		
+		
+		
+	}
+	
+}

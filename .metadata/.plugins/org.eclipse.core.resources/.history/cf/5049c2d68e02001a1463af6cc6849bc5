@@ -1,0 +1,5 @@
+package fr.bipbipgaming.engine.utils;
+
+public class FileUtils {
+
+}

@@ -1,0 +1,15 @@
+package fr.bipbipgaming.engine.graphics;
+
+import org.newdawn.slick.opengl.Texture;
+
+public class Material {
+	
+	private Texture texture;
+	
+	public Material(String path) {
+		
+		
+		
+	}
+	
+}

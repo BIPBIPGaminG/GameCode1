@@ -1,0 +1,19 @@
+package fr.bipbipgaming.engine.io;
+
+import org.lwjgl.glfw.GLFWCursorPosCallback;
+import org.lwjgl.glfw.GLFWKeyCallback;
+import org.lwjgl.glfw.GLFWMouseButtonCallback;
+
+public class Input {
+	
+	private GLFWKeyCallback keyboard;
+	private GLFWCursorPosCallback mouseMove;
+	private GLFWMouseButtonCallback mouseButton;
+	
+	public void Input() {
+		
+		
+		
+	}
+	
+}
